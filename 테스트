@@ -11,4 +11,4 @@ void draw() {
   text("대한민국", i++, 64);
   if (i>width) i=0;
   //ellipse(mouseX, mouseY, 80, 80);
-}
+} aaaaa
