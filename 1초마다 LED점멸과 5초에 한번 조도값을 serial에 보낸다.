@@ -1,0 +1,31 @@
+#include <SimpleTimer.h>
+
+const int led=13;
+boolean ledOn=false;
+
+SimpleTimer timer;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(led,OUTPUT);
+  timer.setInterval(1000,toggle);
+  timer.setInterval(5000,notify1);
+}
+
+void loop() {
+  timer.run();
+}
+void toggle() {
+  if(ledOn==true) {
+    digitalWrite(led,LOW);
+  }
+  else {
+    digitalWrite(led,HIGH);
+  }
+  ledOn=!ledOn;
+}
+void notify1() {
+  Serial.print("Brightness : ");
+  Serial.println(analogRead(A0));
+}
