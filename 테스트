@@ -1,11 +1,14 @@
-        aa
-        bb
-        cc
-        
-              
-              
-              
-              
-              
-              
-        
+int i=0;
+PFont f;
+void setup() {
+  fill(0, 0, 255);
+  textSize(64);
+  f=createFont("굴림", 64);
+  textFont(f);
+}
+void draw() {
+  background(255);
+  text("대한민국", i++, 64);
+  if (i>width) i=0;
+  //ellipse(mouseX, mouseY, 80, 80);
+}
