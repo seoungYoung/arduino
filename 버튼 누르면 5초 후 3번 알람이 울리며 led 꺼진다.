@@ -1,0 +1,36 @@
+#include <SimpleTimer.h>
+
+#define btn 2
+const int led=13;
+#define alarm 8
+SimpleTimer timer;
+int pState=LOW;
+boolean booked=false;
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(alarm,OUTPUT);
+  pinMode(led,OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int state=digitalRead(btn);
+  if(pState==LOW && state==HIGH) {
+    if(booked==false) {
+      booked=true;
+      digitalWrite(led,HIGH);
+      timer.setTimeout(5000,beep);
+    }
+  }
+  pState=state;
+  timer.run();
+}
+void beep() {
+  digitalWrite(led,LOW);
+  booked=false;
+  tone(alarm,1000,20);
+  delay(200);
+  tone(alarm,1000,20);
+  delay(200);
+  tone(alarm,1000,20);  
+}
