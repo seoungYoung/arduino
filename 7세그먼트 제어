@@ -1,0 +1,35 @@
+byte digits[10][7] =
+{
+  { 0, 0, 0, 0, 0, 0, 1 }, // 0
+  { 1, 0, 0, 1, 1, 1, 1 }, // 1
+  { 0, 0, 1, 0, 0, 1, 0 }, // 2
+  { 0, 0, 0, 0, 1, 1, 0 }, // 3
+  { 1, 0, 0, 1, 1, 0, 0 }, // 4
+  { 0, 1, 0, 0, 1, 0, 0 }, // 5
+  { 0, 1, 0, 0, 0, 0, 0 }, // 6
+  { 0, 0, 0, 1, 1, 1, 1 }, // 7
+  { 0, 0, 0, 0, 0, 0, 0 }, // 8
+  { 0, 0, 0, 1, 1, 0, 0 } // 9
+};
+
+void setup() {
+  // put your setup code here, to run once:
+  for (int i = 2; i < 10; i++) {
+    pinMode(i, OUTPUT);
+  }
+  digitalWrite(9, HIGH); // dp를 꺼 준다. 
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  for (int i = 0; i < 10; i++) {
+    delay(1000);
+    displayDigit(i);
+  }
+}
+void displayDigit(int num) {
+  int pinBase = 2;
+  for (int i = 0; i < 7; i++) {
+    digitalWrite(pinBase + i, digits[num][i]);
+  }
+}
