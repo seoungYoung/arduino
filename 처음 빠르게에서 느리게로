@@ -1,0 +1,22 @@
+#define led 11
+int displayPeriod = 100;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  flash();
+  displayPeriod+=100;
+  if(displayPeriod>3000) {
+    displayPeriod=100;
+  }
+}
+void flash() {
+  digitalWrite(led, HIGH);
+  delay(displayPeriod);
+  digitalWrite(led, LOW);
+  delay(displayPeriod);
+}
